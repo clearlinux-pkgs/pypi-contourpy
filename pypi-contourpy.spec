@@ -4,7 +4,7 @@
 #
 Name     : pypi-contourpy
 Version  : 1.0.5
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/38/b3/d6fd43ab2eadce72ac089328d80e9cdf274efdb79a9933aaf52ef1621e99/contourpy-1.0.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/38/b3/d6fd43ab2eadce72ac089328d80e9cdf274efdb79a9933aaf52ef1621e99/contourpy-1.0.5.tar.gz
 Summary  : Python library for calculating contours of 2D quadrilateral grids
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: pypi-contourpy-filemap = %{version}-%{release}
 Requires: pypi-contourpy-lib = %{version}-%{release}
+Requires: pypi-contourpy-license = %{version}-%{release}
 Requires: pypi-contourpy-python = %{version}-%{release}
 Requires: pypi-contourpy-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -34,10 +35,19 @@ filemap components for the pypi-contourpy package.
 %package lib
 Summary: lib components for the pypi-contourpy package.
 Group: Libraries
+Requires: pypi-contourpy-license = %{version}-%{release}
 Requires: pypi-contourpy-filemap = %{version}-%{release}
 
 %description lib
 lib components for the pypi-contourpy package.
+
+
+%package license
+Summary: license components for the pypi-contourpy package.
+Group: Default
+
+%description license
+license components for the pypi-contourpy package.
 
 
 %package python
@@ -73,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663611935
+export SOURCE_DATE_EPOCH=1666722713
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -85,8 +95,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx"
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
@@ -97,6 +107,8 @@ popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-contourpy
+cp %{_builddir}/contourpy-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-contourpy/0317372d3b845cebe6fc42326867cb77386204e6 || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -121,6 +133,10 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/share/clear/optimized-elf/other*
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-contourpy/0317372d3b845cebe6fc42326867cb77386204e6
 
 %files python
 %defattr(-,root,root,-)
