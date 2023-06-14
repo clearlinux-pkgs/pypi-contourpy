@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-contourpy
-Version  : 1.0.7
-Release  : 12
-URL      : https://files.pythonhosted.org/packages/b4/9b/6edb9d3e334a70a212f66a844188fcb57ddbd528cbc3b1fe7abfc317ddd7/contourpy-1.0.7.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b4/9b/6edb9d3e334a70a212f66a844188fcb57ddbd528cbc3b1fe7abfc317ddd7/contourpy-1.0.7.tar.gz
+Version  : 1.1.0
+Release  : 13
+URL      : https://files.pythonhosted.org/packages/a7/3b/632c003e1dfbc82d32c0466762f2d2cf139d26032626dc65944e38d0e5b9/contourpy-1.1.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/a7/3b/632c003e1dfbc82d32c0466762f2d2cf139d26032626dc65944e38d0e5b9/contourpy-1.1.0.tar.gz
 Summary  : Python library for calculating contours of 2D quadrilateral grids
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -15,17 +15,17 @@ Requires: pypi-contourpy-license = %{version}-%{release}
 Requires: pypi-contourpy-python = %{version}-%{release}
 Requires: pypi-contourpy-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
+BuildRequires : meson
+BuildRequires : pypi(meson)
+BuildRequires : pypi(meson_python)
 BuildRequires : pypi(pybind11)
-BuildRequires : pypi(setuptools)
+BuildRequires : pypi-pybind11
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
 
 %description
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/contourpy/contourpy/main/docs/_static/contourpy_logo_horiz_white.svg">
 <img alt="ContourPy" src="https://raw.githubusercontent.com/contourpy/contourpy/main/docs/_static/contourpy_logo_horiz.svg" height="90">
-</picture>
 
 %package license
 Summary: license components for the pypi-contourpy package.
@@ -56,10 +56,10 @@ python3 components for the pypi-contourpy package.
 
 
 %prep
-%setup -q -n contourpy-1.0.7
-cd %{_builddir}/contourpy-1.0.7
+%setup -q -n contourpy-1.1.0
+cd %{_builddir}/contourpy-1.1.0
 pushd ..
-cp -a contourpy-1.0.7 buildavx2
+cp -a contourpy-1.1.0 buildavx2
 popd
 
 %build
@@ -67,7 +67,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685561068
+export SOURCE_DATE_EPOCH=1686783144
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
