@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-contourpy
-Version  : 1.1.0
-Release  : 13
-URL      : https://files.pythonhosted.org/packages/a7/3b/632c003e1dfbc82d32c0466762f2d2cf139d26032626dc65944e38d0e5b9/contourpy-1.1.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/a7/3b/632c003e1dfbc82d32c0466762f2d2cf139d26032626dc65944e38d0e5b9/contourpy-1.1.0.tar.gz
+Version  : 1.1.1
+Release  : 14
+URL      : https://files.pythonhosted.org/packages/b1/7d/087ee4295e7580d3f7eb8a8a4e0ec8c7847e60f34135248ccf831cf5bbfc/contourpy-1.1.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b1/7d/087ee4295e7580d3f7eb8a8a4e0ec8c7847e60f34135248ccf831cf5bbfc/contourpy-1.1.1.tar.gz
 Summary  : Python library for calculating contours of 2D quadrilateral grids
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -56,10 +56,10 @@ python3 components for the pypi-contourpy package.
 
 
 %prep
-%setup -q -n contourpy-1.1.0
-cd %{_builddir}/contourpy-1.1.0
+%setup -q -n contourpy-1.1.1
+cd %{_builddir}/contourpy-1.1.1
 pushd ..
-cp -a contourpy-1.1.0 buildavx2
+cp -a contourpy-1.1.1 buildavx2
 popd
 
 %build
@@ -67,7 +67,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686783144
+export SOURCE_DATE_EPOCH=1695054565
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
