@@ -1,5 +1,5 @@
 PKG_NAME := pypi-contourpy
-URL = https://files.pythonhosted.org/packages/8d/9e/e4786569b319847ffd98a8326802d5cf8a5500860dbfc2df1f0f4883ed99/contourpy-1.2.1.tar.gz
+URL = https://files.pythonhosted.org/packages/f5/f6/31a8f28b4a2a4fa0e01085e542f3081ab0588eff8e589d39d775172c9792/contourpy-1.3.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
