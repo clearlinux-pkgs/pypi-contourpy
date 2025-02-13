@@ -7,7 +7,7 @@
 #
 Name     : pypi-contourpy
 Version  : 1.3.1
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/25/c2/fc7193cc5383637ff390a712e88e4ded0452c9fbcf84abe3de5ea3df1866/contourpy-1.3.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/25/c2/fc7193cc5383637ff390a712e88e4ded0452c9fbcf84abe3de5ea3df1866/contourpy-1.3.1.tar.gz
 Summary  : Python library for calculating contours of 2D quadrilateral grids
